@@ -35,6 +35,10 @@ const UserOptions = ({ user }) => {
     { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
   ];
 
+  if (!user || !user.role) {
+    return null; // or some fallback UI
+  }
+
   if (user.role === "admin") {
     options.unshift({
       icon: <DashboardIcon />,
@@ -90,6 +94,10 @@ const UserOptions = ({ user }) => {
           />
         ))}
       </SpeedDial>
+      <div>
+      {/* Your existing code that uses user.role */}
+      <p>{user.role}</p>
+    </div>
     </Fragment>
   );
 };
